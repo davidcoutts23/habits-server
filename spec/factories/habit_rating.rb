@@ -1,5 +1,5 @@
 FactoryBot.define do
- factory :category do
-  name { Faker::Lorem.words }
+ factory :rating do
+  rating { Faker::Lorem.words }
  end
 end

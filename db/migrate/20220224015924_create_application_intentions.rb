@@ -4,7 +4,7 @@ class CreateApplicationIntentions < ActiveRecord::Migration[7.0]
       t.string :behaviour
       t.string :time
       t.string :location
-      t.references :habits, null: false, foreign_key: true
+      t.references :habit, null: false, foreign_key: true
 
       t.timestamps
     end

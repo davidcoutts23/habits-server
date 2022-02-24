@@ -18,10 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_24_015924) do
     t.string "behaviour"
     t.string "time"
     t.string "location"
-    t.bigint "habits_id", null: false
+    t.bigint "habit_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["habits_id"], name: "index_application_intentions_on_habits_id"
+    t.index ["habit_id"], name: "index_application_intentions_on_habit_id"
   end
 
   create_table "habit_ratings", force: :cascade do |t|
@@ -32,12 +32,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_24_015924) do
 
   create_table "habits", force: :cascade do |t|
     t.string "name"
-    t.bigint "habit_ratings_id", null: false
+    t.bigint "habit_rating_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["habit_ratings_id"], name: "index_habits_on_habit_ratings_id"
+    t.index ["habit_rating_id"], name: "index_habits_on_habit_rating_id"
   end
 
-  add_foreign_key "application_intentions", "habits", column: "habits_id"
-  add_foreign_key "habits", "habit_ratings", column: "habit_ratings_id"
+  add_foreign_key "application_intentions", "habits"
+  add_foreign_key "habits", "habit_ratings"
 end

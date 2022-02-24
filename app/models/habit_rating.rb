@@ -1,0 +1,2 @@
+class HabitRating < ApplicationRecord
+end

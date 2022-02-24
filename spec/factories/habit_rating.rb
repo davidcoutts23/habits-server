@@ -1,5 +1,6 @@
 FactoryBot.define do
- factory :rating do
-  rating { Faker::Lorem.words }
+ factory :habit_rating do
+#   rating { Faker::Lorem.words }
+    rating {"Test"}
  end
 end

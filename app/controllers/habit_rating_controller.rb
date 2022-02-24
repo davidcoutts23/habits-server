@@ -1,2 +1,0 @@
-class HabitRatingController < ApplicationController
-end

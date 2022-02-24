@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "HabitRatings", type: :request do
-  # let!(:ratings) { FactoryBot.create(:rating) }
+  let!(:rating) { build(:habit_rating) }
   # let!(:rating_id) { ratings.first.id }
 
+  
+
+
   describe 'GET /habitRatings' do
-   before { get '/api/v1/habitRatings' } 
+   before { get '/api/v1/habit_rating' } 
     it 'returns ratings' do
      expect(json).not_to be_empty
      expect(json.size).to eq(5)

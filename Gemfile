@@ -54,4 +54,4 @@ group :test do
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
 end
 
-gem 'jsonapi-serializer'
+gem 'blueprinter'

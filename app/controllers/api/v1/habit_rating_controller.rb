@@ -4,7 +4,8 @@ module Api
 
       #Get /habit_ratings
       def index
-        @ratings = HabitRating.all
+        habit_ratings_json = HabitRatingBlueprint.render_as_json HabitRating.all
+        render json: habit_ratings_json
       end
      end
    end

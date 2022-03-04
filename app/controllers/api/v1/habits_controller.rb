@@ -22,7 +22,7 @@ module Api
       private
 
       def habit_params
-        params.permit(:name, :habit_rating_id)
+        params.permit(:name, :habit_rating_id, application_intentions_attributes: [:behaviour, :time, :location])
       end
     end
   end

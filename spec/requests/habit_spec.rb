@@ -16,11 +16,32 @@ RSpec.describe 'Habits', type: :request do
 
   describe 'POST /habits/:id' do
     let!(:habit_rating) { create(:habit_rating) }
-    let(:valid_attributes) do
-      { name: 'Brush my teeth',
-        habit_rating_id: habit_rating.id }
+    let(:valid_attributes_application_intention) do
+      { 
+        name: 'I will meditate every day', 
+        habit_rating_id: habit_rating.id,
+        application_intentions_attributes: [
+          {
+            behaviour: 'meditate for 20 mins', 
+            time: 'when I wake up every day', 
+            location: 'in the lounge room'
+          }
+        ]
+      }
     end
-    context 'when request attributes are valid' do
+    let(:valid_attributes) do
+      { 
+        name: 'I will meditate every day', 
+        habit_rating_id: habit_rating.id
+      }
+    end
+    context 'when request attributes including application intention are valid' do
+      before { post '/api/v1/habits', params: valid_attributes_application_intention }
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+    context 'when request attributes with no application intention are valid' do
       before { post '/api/v1/habits', params: valid_attributes }
       it 'returns status code 201' do
         expect(response).to have_http_status(201)

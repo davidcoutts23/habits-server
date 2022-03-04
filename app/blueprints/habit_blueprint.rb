@@ -3,4 +3,5 @@ class HabitBlueprint < Blueprinter::Base
 
   fields :name
   association :habit_rating, blueprint: HabitRatingBlueprint
+  association :application_intentions, blueprint: ApplicationIntentionBlueprint
 end

@@ -1,6 +1,6 @@
 module Api
   module V1
-    class HabitRatingController < ApplicationController
+    class HabitRatingsController < ApplicationController
       # Get /habit_ratings
       def index
         habit_ratings_json = HabitRatingBlueprint.render_as_json HabitRating.all

@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe "Habits", type: :request do
 
   let!(:habits) { create(:habit) }
-  # let!(:habit_id) { habits.first.id }
 
   describe 'GET /habits' do
    before { get '/api/v1/habits' } 

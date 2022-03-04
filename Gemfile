@@ -56,3 +56,4 @@ end
 
 gem 'blueprinter'
 gem 'rubocop', require: false
+gem 'rack-cors'

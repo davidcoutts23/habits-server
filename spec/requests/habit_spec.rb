@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Habits', type: :request do
@@ -17,21 +19,21 @@ RSpec.describe 'Habits', type: :request do
   describe 'POST /habits/:id' do
     let!(:habit_rating) { create(:habit_rating) }
     let(:valid_attributes_application_intention) do
-      { 
-        name: 'I will meditate every day', 
+      {
+        name: 'I will meditate every day',
         habit_rating_id: habit_rating.id,
         application_intentions_attributes: [
           {
-            behaviour: 'meditate for 20 mins', 
-            time: 'when I wake up every day', 
+            behaviour: 'meditate for 20 mins',
+            time: 'when I wake up every day',
             location: 'in the lounge room'
           }
         ]
       }
     end
     let(:valid_attributes) do
-      { 
-        name: 'I will meditate every day', 
+      {
+        name: 'I will meditate every day',
         habit_rating_id: habit_rating.id
       }
     end

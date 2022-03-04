@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Habit < ApplicationRecord
   has_many :application_intentions
   belongs_to :habit_rating

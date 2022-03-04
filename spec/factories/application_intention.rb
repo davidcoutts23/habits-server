@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :application_intention, class: ApplicationIntention do
     behaviour { Faker::Lorem.words(number: 1) }

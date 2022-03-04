@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class HabitsController < ApplicationController
@@ -22,7 +24,7 @@ module Api
       private
 
       def habit_params
-        params.permit(:name, :habit_rating_id, application_intentions_attributes: [:behaviour, :time, :location])
+        params.permit(:name, :habit_rating_id, application_intentions_attributes: %i[behaviour time location])
       end
     end
   end

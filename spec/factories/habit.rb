@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :habit, class: Habit do
     name { Faker::Lorem.words(number: 1) }

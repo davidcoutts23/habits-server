@@ -1,4 +1,4 @@
 class HabitRating < ApplicationRecord
-    has_one :habit
-    validates :rating, presence: true
+  has_one :habit
+  validates :rating, presence: true
 end

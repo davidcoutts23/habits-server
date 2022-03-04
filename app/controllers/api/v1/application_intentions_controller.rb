@@ -1,8 +1,7 @@
 module Api
-   module V1
-     class ApplicationIntentionsController < ApplicationController
-
-      #Get /application_intentions
+  module V1
+    class ApplicationIntentionsController < ApplicationController
+      # Get /application_intentions
       def index
         application_intentions_json = ApplicationIntentionBlueprint.render_as_json ApplicationIntention.all
         render json: application_intentions_json
@@ -18,12 +17,13 @@ module Api
           application_intention_json = @application_intention.errors
           render json: application_intention_json, status: :unprocessable_entity
         end
-     end
-     private
+      end
+
+      private
 
       def application_intention_params
         params.permit(:behaviour, :time, :location, :habit_id)
       end
-   end
-end
+    end
+  end
 end

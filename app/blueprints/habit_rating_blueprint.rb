@@ -3,5 +3,5 @@
 class HabitRatingBlueprint < Blueprinter::Base
   identifier :id
 
-  fields :rating
+  fields :rating, :colour
 end

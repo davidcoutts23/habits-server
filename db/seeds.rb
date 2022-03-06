@@ -7,6 +7,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-HabitRating.create(rating: "Positive", colour: "Success")
-HabitRating.create(rating: "Neutral", colour: "Warning")
-HabitRating.create(rating: "Negative", colour: "Danger")
+HabitRating.create(rating: "Positive", colour: "success")
+HabitRating.create(rating: "Neutral", colour: "warning")
+HabitRating.create(rating: "Negative", colour: "danger")

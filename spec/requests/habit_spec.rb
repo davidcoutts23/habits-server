@@ -18,10 +18,12 @@ RSpec.describe 'Habits', type: :request do
 
   describe 'POST /habits/:id' do
     let!(:habit_rating) { create(:habit_rating) }
+    let!(:user) { create(:user) }
     let(:valid_attributes_application_intention) do
       {
         name: 'I will meditate every day',
         habit_rating_id: habit_rating.id,
+        user_id: user.id,
         application_intentions_attributes: [
           {
             behaviour: 'meditate for 20 mins',
@@ -34,7 +36,8 @@ RSpec.describe 'Habits', type: :request do
     let(:valid_attributes) do
       {
         name: 'I will meditate every day',
-        habit_rating_id: habit_rating.id
+        habit_rating_id: habit_rating.id,
+        user_id: user.id,
       }
     end
     context 'when request attributes including application intention are valid' do

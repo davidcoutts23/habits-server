@@ -7,4 +7,8 @@ RSpec.describe Habit, type: :model do
   it { should have_many(:application_intentions) }
   # Validation tests
   it { should validate_presence_of(:name) }
+  
+  describe 'Associations' do
+    it { should belong_to(:user) }
+  end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :habit_ratings, only: %i[index create destroy]
       resources :habits, only: %i[index create destroy]
       resources :application_intentions, only: %i[index create destroy]
+      post 'register', to: 'users#create'
     end
   end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :habits, only: %i[index create destroy]
       resources :application_intentions, only: %i[index create destroy]
       post 'register', to: 'users#create'
+      post 'login', to: 'authentication#create'
     end
   end
 end

@@ -7,8 +7,8 @@ module Api
      def create
        if user
          raise AuthenticateError unless user.authenticate(params.require(:password))
-         user_json = UserBlueprint.render_as_json user
-		 render json: user_json, status: :created
+         user_json = UserBlueprint.render_as_json(user)
+		     render json: user_json, status: :created
        else
          render json: { error: 'No such user' }, status: :unauthorized
        end

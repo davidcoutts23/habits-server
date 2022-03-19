@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Habits', type: :request do
-  let!(:habits) { create(:habit) }
   let!(:user) { create(:user) }
-
+  let!(:habits) { create(:habit, user_id: user.id) }
+  
   describe 'GET /habits' do
     before { get '/api/v1/habits', headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
     it 'returns habits' do
@@ -24,7 +24,6 @@ RSpec.describe 'Habits', type: :request do
       {
         name: 'I will meditate every day',
         habit_rating_id: habit_rating.id,
-        user_id: user.id,
         application_intentions_attributes: [
           {
             behaviour: 'meditate for 20 mins',
@@ -38,7 +37,6 @@ RSpec.describe 'Habits', type: :request do
       {
         name: 'I will meditate every day',
         habit_rating_id: habit_rating.id,
-        user_id: user.id,
       }
     end
     context 'when request attributes including application intention are valid' do

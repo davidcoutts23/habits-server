@@ -6,13 +6,13 @@ module Api
       before_action :authenticate_request!
       # Get /habits
       def index
-        habits_json = HabitBlueprint.render_as_json Habit.all
+        habits_json = HabitBlueprint.render_as_json current_user!.habits.all
         render json: habits_json
       end
 
       # Post /habit
       def create
-        @habit = Habit.new(habit_params)
+        @habit = current_user!.habits.create(habit_params)
         if @habit.save
           habits_json = HabitBlueprint.render_as_json Habit.find(@habit.id)
           render json: habits_json, status: :created
@@ -25,7 +25,7 @@ module Api
       private
 
       def habit_params
-        params.permit(:name, :habit_rating_id, :user_id, application_intentions_attributes: %i[behaviour time location])
+        params.permit(:name, :habit_rating_id, application_intentions_attributes: %i[behaviour time location])
       end
     end
   end

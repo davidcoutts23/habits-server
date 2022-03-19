@@ -3,6 +3,7 @@
 module Api
   module V1
     class HabitsController < ApplicationController
+      before_action :authenticate_request!
       # Get /habits
       def index
         habits_json = HabitBlueprint.render_as_json Habit.all

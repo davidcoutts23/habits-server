@@ -4,9 +4,10 @@ require 'rails_helper'
 
 RSpec.describe 'Habits', type: :request do
   let!(:habits) { create(:habit) }
+  let!(:user) { create(:user) }
 
   describe 'GET /habits' do
-    before { get '/api/v1/habits' }
+    before { get '/api/v1/habits', headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
     it 'returns habits' do
       expect(JSON.parse(response.body)).not_to be_empty
       expect(JSON.parse(response.body).size).to eq(1)
@@ -41,19 +42,19 @@ RSpec.describe 'Habits', type: :request do
       }
     end
     context 'when request attributes including application intention are valid' do
-      before { post '/api/v1/habits', params: valid_attributes_application_intention }
+      before { post '/api/v1/habits', params: valid_attributes_application_intention, headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
       end
     end
     context 'when request attributes with no application intention are valid' do
-      before { post '/api/v1/habits', params: valid_attributes }
+      before { post '/api/v1/habits', params: valid_attributes, headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
       end
     end
     context 'when an invalid request' do
-      before { post '/api/v1/habits', params: {} }
+      before { post '/api/v1/habits', params: {}, headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end

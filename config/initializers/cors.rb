@@ -17,7 +17,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'https://shrouded-wildwood-58915.herokuapp.com/'
+    origins 'https://shrouded-wildwood-58915.herokuapp.com'
 
     resource '*',
              headers: :any,

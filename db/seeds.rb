@@ -10,4 +10,4 @@
 HabitRating.create(rating: "Positive", colour: "success")
 HabitRating.create(rating: "Neutral", colour: "warning")
 HabitRating.create(rating: "Negative", colour: "danger")
-User.create(email: "test@test.com", password: "password")
+User.create(email: "test@test.com", password: "red@apple_soup!")

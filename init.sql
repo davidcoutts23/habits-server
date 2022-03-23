@@ -1,0 +1,1 @@
+CREATE USER habits_api_development SUPERUSER;

@@ -90,3 +90,12 @@ production:
   # database: habits_api_production
   # username: habits_api
   # password: <%= ENV["HABITS_API_DATABASE_PASSWORD"] %>
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['POSTGRESQL_HOST'] %>
+  username: <%= ENV['POSTGRESQL_USER_NAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+  pool: 5
+  database: <%= ENV['POSTGRESQL_DB'] %>

@@ -70,3 +70,10 @@ services:
 # Declare the volumes that our application uses.
 volumes:
   db_data:
+
+logging:
+  driver: awslogs
+  options:
+    awslogs-region: ap-southeast-2
+    awslogs-group: habits-api-logs
+    awslogs-stream: habits-api-logs

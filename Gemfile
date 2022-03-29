@@ -61,3 +61,4 @@ gem 'rubocop', require: false
 gem 'jwt'
 # gem 'nokogiri', '~> 1.13', '>= 1.13.3'
 gem "figaro"
+gem 'lograge'

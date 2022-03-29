@@ -3,11 +3,11 @@ class ApplicationController < ActionController::API
  rescue_from ActiveRecord::RecordNotDestroyed, with: :not_destroyed
 
  def authenticate_request!
-   Rails.logger.info 'Request headers:'
-   Rails.logger.info request.headers['Authorization'].split(' ').last
+   logger.info 'Request headers:'
+   logger.info request.headers['Authorization'].split(' ').last
    return invalid_authentication if !payload || !AuthenticationTokenService.valid_payload(payload.first)
-   Rails.logger.info 'User authenticated:'
-   Rails.logger.info current_user!.email
+   logger.info 'User authenticated:'
+   logger.info current_user!.email
    current_user!
    invalid_authentication unless @current_user
  end

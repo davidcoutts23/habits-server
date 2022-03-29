@@ -5,9 +5,10 @@ class ApplicationController < ActionController::API
  def authenticate_request!
    logger.info 'Request headers:'
    logger.info request.headers['Authorization'].split(' ').last
-   return invalid_authentication if !payload || !AuthenticationTokenService.valid_payload(payload.first)
    logger.info 'User authenticated:'
    logger.info current_user!.email
+   
+   return invalid_authentication if !payload || !AuthenticationTokenService.valid_payload(payload.first)
    current_user!
    invalid_authentication unless @current_user
  end

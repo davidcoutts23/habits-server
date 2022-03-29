@@ -9,6 +9,8 @@ class AuthenticationTokenService
  end
 
  def self.decode(token)
+   logger.info 'Token to decode:'
+   logger.info token
    JWT.decode token, HMAC_SECRET, true, { algorithm: ALGORITHM_TYPE }
  rescue JWT::ExpiredSignature, JWT::DecodeError
    false
@@ -21,7 +23,7 @@ class AuthenticationTokenService
  def self.expired(payload)
    Time.at(payload['exp']) < Time.now
  end
- 
+
  def self.expired_token
    render json: { error: 'Expired token! login again' }, status: :unauthorized
  end

@@ -7,8 +7,8 @@ require_relative 'application'
 Rails.application.initialize!
 
 # Configure logger
-Rails.logger = Logger.new(STDOUT)
-# Rails.logger.level = Logger::DEBUG
+# Rails.logger = Logger.new(STDOUT)
+Rails.logger.level = Logger::DEBUG
 
 # logger = ActiveSupport::Logger.new($stdout)
 # logger.formatter = config.log_formatter

@@ -3,15 +3,6 @@ class ApplicationController < ActionController::API
  rescue_from ActiveRecord::RecordNotDestroyed, with: :not_destroyed
 
  def authenticate_request!
-   logger.info 'Token:'
-   logger.info request.headers['Authorization'].split(' ').last
-   logger.info 'Decoded token:'
-   logger.info AuthenticationTokenService.decode(request.headers['Authorization'].split(' ').last)
-   logger.info 'User ID:'
-   logger.info AuthenticationTokenService.decode(request.headers['Authorization'].split(' ').last)[0]['user_id']
-   logger.info 'User authenticated:'
-   logger.info current_user!.email
-
    return invalid_authentication if !payload || !AuthenticationTokenService.valid_payload(payload.first)
    current_user!
    invalid_authentication unless @current_user

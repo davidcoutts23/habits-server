@@ -9,10 +9,6 @@ class AuthenticationTokenService
  end
 
  def self.decode(token)
-   Rails.logger.info 'Authentication token service: Token to decode:'
-   Rails.logger.info token
-   Rails.logger.info 'Authentication token service: Decoded token'
-   Rails.logger.info JWT.decode token, HMAC_SECRET, true, { algorithm: ALGORITHM_TYPE }
    JWT.decode token, HMAC_SECRET, true, { algorithm: ALGORITHM_TYPE }
  rescue JWT::ExpiredSignature, JWT::DecodeError
    false

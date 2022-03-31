@@ -4,11 +4,6 @@ module Api
   module V1
     class ApplicationIntentionsController < ApplicationController
       before_action :authenticate_request!
-      # Get /application_intentions
-      def index
-        application_intentions_json = ApplicationIntentionBlueprint.render_as_json ApplicationIntention.all
-        render json: application_intentions_json
-      end
 
       # Post /application_intentions
       def create

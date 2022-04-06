@@ -27,6 +27,10 @@ module Api
         application_intention_json = ApplicationIntentionBlueprint.render_as_json get_application_intention
         render json: application_intention_json, status: :ok
       end
+
+      def destroy
+        get_application_intention.destroy
+      end
         
       private
 

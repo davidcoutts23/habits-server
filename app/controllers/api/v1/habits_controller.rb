@@ -33,6 +33,10 @@ module Api
         habit_json = HabitBlueprint.render_as_json get_habit
         render json: habit_json, status: :ok
       end
+      
+      def destroy
+        get_habit.destroy
+      end
 
       private
 

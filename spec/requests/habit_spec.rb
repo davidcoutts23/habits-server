@@ -75,13 +75,13 @@ RSpec.describe 'Habits', type: :request do
     end
   end
 
-#   describe 'DELETE /application_intentions/:id' do
-#     context 'when application intention exists' do
-#       before { delete "/api/v1/application_intentions/#{application_intention.id}", headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
-#       it 'returns status code 204' do
-#         expect(response).to have_http_status(204)
-#       end
-#     end
-#   end
+  describe 'DELETE /habits/:id' do
+    context 'when habit exists' do
+      before { delete "/api/v1/habits/#{habit.id}", headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
 
 end

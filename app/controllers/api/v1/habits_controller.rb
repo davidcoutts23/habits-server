@@ -24,8 +24,6 @@ module Api
 
       # Put /habit/id
       def update
-        logger.info "yoyo"
-        logger.info habit_params
         get_habit.update(
           name:habit_params[:name],
           habit_rating_id:habit_params[:habit_rating_id]

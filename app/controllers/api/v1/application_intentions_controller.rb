@@ -40,7 +40,7 @@ module Api
 
       def get_application_intention
        @application_intention = ApplicationIntention.find(params[:id])
-     end
+      end
     end
   end
 end

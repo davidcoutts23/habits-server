@@ -22,10 +22,26 @@ module Api
         end
       end
 
+      # Put /habit/id
+      def update
+        logger.info "yoyo"
+        logger.info habit_params
+        get_habit.update(
+          name:habit_params[:name],
+          habit_rating_id:habit_params[:habit_rating_id]
+        )
+        habit_json = HabitBlueprint.render_as_json get_habit
+        render json: habit_json, status: :ok
+      end
+
       private
 
       def habit_params
         params.permit(:name, :habit_rating_id, application_intentions_attributes: %i[behaviour time location])
+      end
+
+      def get_habit
+       @habit = Habit.find(params[:id])
       end
     end
   end

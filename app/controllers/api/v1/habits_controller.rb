@@ -33,6 +33,7 @@ module Api
       end
       
       def destroy
+        ApplicationIntention.where(habit_id: get_habit.id).destroy_all
         get_habit.destroy
       end
 

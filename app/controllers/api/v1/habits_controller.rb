@@ -40,7 +40,7 @@ module Api
       private
 
       def habit_params
-        params.permit(:name, :habit_rating_id, application_intentions_attributes: %i[behaviour time location])
+        params.permit(:name, :habit_rating_id, :days_of_week_active=>[], application_intentions_attributes: %i[behaviour time location])
       end
 
       def get_habit

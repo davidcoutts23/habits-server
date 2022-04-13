@@ -10,6 +10,7 @@ RSpec.describe 'Habits', type: :request do
       {
         name: 'I will meditate every day',
         habit_rating_id: habit_rating.id,
+        days_of_week_active: [1,2,3,4,5,6,7],
         application_intentions_attributes: [
           {
             behaviour: 'meditate for 20 mins',
@@ -23,6 +24,7 @@ RSpec.describe 'Habits', type: :request do
       {
         name: 'Meditate daily',
         habit_rating_id: habit_rating.id,
+        days_of_week_active: [1,2,3,4,5,6,7],
       }
     end
   

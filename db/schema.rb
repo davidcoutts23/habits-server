@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_10_110520) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.integer "days_of_week_active", default: [], array: true
+    t.string "days_of_week_active", default: [], array: true
     t.index ["habit_rating_id"], name: "index_habits_on_habit_rating_id"
     t.index ["user_id"], name: "index_habits_on_user_id"
   end

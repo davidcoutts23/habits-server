@@ -24,7 +24,7 @@ RSpec.describe 'Habits', type: :request do
       {
         name: 'Meditate daily',
         habit_rating_id: habit_rating.id,
-        days_of_week_active: [1,2,3,4,5,6,7],
+        days_of_week_active: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
       }
     end
   

@@ -26,7 +26,8 @@ module Api
       def update
         get_habit.update(
           name:habit_params[:name],
-          habit_rating_id:habit_params[:habit_rating_id]
+          habit_rating_id:habit_params[:habit_rating_id],
+          days_of_week_active:habit_params[:days_of_week_active]
         )
         habit_json = HabitBlueprint.render_as_json get_habit
         render json: habit_json, status: :ok

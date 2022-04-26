@@ -1,7 +1,7 @@
 module Api
   module V1
     class HabitTrackerEntriesController < ApplicationController
-        before_action :authenticate_request!
+        before_action :authenticate_request!, :get_habit_tracker_entry, only: %i[update]
 
         def index
             if request.query_parameters.any?
@@ -18,6 +18,26 @@ module Api
             habit_tracker_entries_json = HabitTrackerEntryBlueprint.render_as_json habit_tracker_entries
             render json: habit_tracker_entries_json
         end
+
+        def update
+          @habit_tracker_entry.update(
+            completion_status:habit_tracker_entry_params[:completion_status],
+          )
+          
+          habit_tracker_entry_json = HabitTrackerEntryBlueprint.render_as_json @habit_tracker_entry
+          render json: habit_tracker_entry_json, status: :ok
+        end
+      
+        private
+
+        def habit_tracker_entry_params
+          params.permit(:id, :completion_status)
+        end
+
+        def get_habit_tracker_entry
+          @habit_tracker_entry = HabitTrackerEntry.find(params[:id])
+        end
+      end
     end
   end
-end
+

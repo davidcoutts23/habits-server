@@ -21,5 +21,3 @@ class CreateHabitTrackingEntriesDailyJob
     HabitTrackerEntry.where(habit_id:habit_id).pluck(:created_at).map { |date| date.strftime('%m/%d/%Y')}
   end
 end
-
-# 

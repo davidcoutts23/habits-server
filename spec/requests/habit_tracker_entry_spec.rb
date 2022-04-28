@@ -1,15 +1,20 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "HabitTrackerEntries", type: :request do
+RSpec.describe 'HabitTrackerEntries', type: :request do
   let!(:user) { create(:user) }
   let!(:habit) { create(:habit) }
-  let!(:unprocessed_habit_tracker_entry) { create(:habit_tracker_entry, completion_status: "unprocessed")}
-  let!(:processed_habit_tracker_entry) { create(:habit_tracker_entry, completion_status: "succeeded")}
-  let!(:processed_habit_tracker_entry) { create(:habit_tracker_entry, completion_status: "failed")}
+  let!(:unprocessed_habit_tracker_entry) { create(:habit_tracker_entry, completion_status: 'unprocessed') }
+  let!(:processed_habit_tracker_entry) { create(:habit_tracker_entry, completion_status: 'succeeded') }
+  let!(:processed_habit_tracker_entry) { create(:habit_tracker_entry, completion_status: 'failed') }
 
   describe 'GET /habit_tracker_entries' do
     context 'Get unprocessed habit tracker entries only' do
-      before { get '/api/v1/habit_tracker_entries?completion_status=unprocessed', headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
+      before do
+        get '/api/v1/habit_tracker_entries?completion_status=unprocessed',
+            headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
+      end
       it 'returns habit tracker entries with an unprocessed completion status' do
         expect(JSON.parse(response.body)).not_to be_empty
         expect(JSON.parse(response.body).size).to eq(1)
@@ -19,7 +24,9 @@ RSpec.describe "HabitTrackerEntries", type: :request do
       end
     end
     context 'Get all habit tracker entries' do
-      before { get '/api/v1/habit_tracker_entries', headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
+      before do
+        get '/api/v1/habit_tracker_entries', headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
+      end
       it 'returns all habit tracker entry records' do
         expect(JSON.parse(response.body)).not_to be_empty
         expect(JSON.parse(response.body).size).to eq(3)
@@ -32,12 +39,15 @@ RSpec.describe "HabitTrackerEntries", type: :request do
 
   let(:valid_attributes) do
     {
-      completion_status: "succeeded"
+      completion_status: 'succeeded'
     }
   end
 
   describe 'PUT /habit_tracker_entries/:id' do
-    before { put "/api/v1/habit_tracker_entries/#{unprocessed_habit_tracker_entry.id}", params: valid_attributes, headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
+    before do
+      put "/api/v1/habit_tracker_entries/#{unprocessed_habit_tracker_entry.id}", params: valid_attributes,
+                                                                                 headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
+    end
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
     end

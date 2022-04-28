@@ -10,4 +10,12 @@ class Habit < ApplicationRecord
   validates :days_of_week_active, presence: true
 
   accepts_nested_attributes_for :application_intentions
+
+  def habit_tracker_weekly_progress
+    Rails.logger.info self.id
+    # current_week_progress = []
+    # (DateTime.current.beginning_of_week..DateTime.current.beginning_of_week).map do |date|
+    #   Rails.logger.info date
+    # end
+  end
 end

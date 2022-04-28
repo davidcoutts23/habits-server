@@ -15,13 +15,19 @@ RSpec.describe 'ApplicationIntentions', type: :request do
 
   describe 'POST /application_intentions/:id' do
     context 'when request attributes are valid' do
-      before { post '/api/v1/application_intentions', params: valid_attributes, headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
+      before do
+        post '/api/v1/application_intentions', params: valid_attributes,
+                                               headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
+      end
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
       end
     end
     context 'when an invalid request' do
-      before { post '/api/v1/application_intentions', params: {}, headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
+      before do
+        post '/api/v1/application_intentions', params: {},
+                                               headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
+      end
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
@@ -31,9 +37,12 @@ RSpec.describe 'ApplicationIntentions', type: :request do
     end
   end
 
-describe 'PUT /application_intentions/:id' do
+  describe 'PUT /application_intentions/:id' do
     context 'when application intention exists' do
-      before { put "/api/v1/application_intentions/#{application_intention.id}", params: valid_attributes, headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
+      before do
+        put "/api/v1/application_intentions/#{application_intention.id}", params: valid_attributes,
+                                                                          headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
+      end
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
@@ -46,12 +55,13 @@ describe 'PUT /application_intentions/:id' do
 
   describe 'DELETE /application_intentions/:id' do
     context 'when application intention exists' do
-      before { delete "/api/v1/application_intentions/#{application_intention.id}", headers: { 'Authorization' => AuthenticationTokenService.call(user.id)} }
+      before do
+        delete "/api/v1/application_intentions/#{application_intention.id}",
+               headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
+      end
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
       end
     end
   end
 end
-
-

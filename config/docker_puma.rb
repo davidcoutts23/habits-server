@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 # Change to match your CPU core count
 workers 1
 
 # Min and Max threads per worker
 threads 1, 6
 
-app_dir = File.expand_path("../..", __FILE__)
+app_dir = File.expand_path('..', __dir__)
 shared_dir = "#{app_dir}/shared"
 
 # Default to production
-rails_env = ENV['RAILS_ENV'] || "production"
+rails_env = ENV['RAILS_ENV'] || 'production'
 environment rails_env
 
 # Set up socket location
@@ -24,7 +26,11 @@ state_path "#{shared_dir}/pids/puma.state"
 activate_control_app
 
 on_worker_boot do
-  require "active_record"
-  ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
+  require 'active_record'
+  begin
+    ActiveRecord::Base.connection.disconnect!
+  rescue StandardError
+    ActiveRecord::ConnectionNotEstablished
+  end
   ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
 end

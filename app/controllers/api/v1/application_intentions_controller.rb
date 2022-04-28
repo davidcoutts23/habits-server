@@ -20,9 +20,9 @@ module Api
       # Put /application_intentions/id
       def update
         get_application_intention.update(
-          behaviour:application_intention_params[:behaviour],
-          time:application_intention_params[:time],
-          location:application_intention_params[:location]
+          behaviour: application_intention_params[:behaviour],
+          time: application_intention_params[:time],
+          location: application_intention_params[:location]
         )
         application_intention_json = ApplicationIntentionBlueprint.render_as_json get_application_intention
         render json: application_intention_json, status: :ok
@@ -31,7 +31,7 @@ module Api
       def destroy
         get_application_intention.destroy
       end
-        
+
       private
 
       def application_intention_params
@@ -39,7 +39,7 @@ module Api
       end
 
       def get_application_intention
-       @application_intention = ApplicationIntention.find(params[:id])
+        @application_intention = ApplicationIntention.find(params[:id])
       end
     end
   end

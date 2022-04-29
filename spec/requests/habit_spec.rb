@@ -98,4 +98,8 @@ RSpec.describe 'Habits', type: :request do
       end
     end
   end
+
+  describe 'GET /habits/:id/habit_tracker_weekly_progress' do
+      pending "add some examples to (or delete) #{__FILE__}"
+  end
 end

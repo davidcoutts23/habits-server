@@ -39,7 +39,7 @@ module Api
       end
 
       def habit_tracker_weekly_progress
-        @habit.habit_tracker_weekly_progress
+        render json: @habit.habit_tracker_weekly_progress, status: :ok
       end
 
       private

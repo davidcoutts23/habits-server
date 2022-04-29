@@ -85,4 +85,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.time_zone = 'Melbourne' # Your local time zone
+  config.active_record.default_timezone = :local
+  config.active_record.time_zone_aware_attributes = false
 end

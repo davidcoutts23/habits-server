@@ -30,27 +30,27 @@ ApplicationIntention.create(habit_id: Habit.second.id,
                             behaviour: 'grab a non alcoholic drink when I would have a beer', time: 'go to the fridge', location: 'kitchen')
 
 HabitTrackerEntry.create(habit_id: Habit.first.id, completion_status: 'unprocessed',
-                         effective_date: DateTime.now.beginning_of_day)
+                         effective_date: DateTime.current.beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.first.id, completion_status: 'succeeded',
-                         effective_date: (DateTime.now - 1.days).beginning_of_day)
+                         effective_date: (DateTime.current- 1.days).beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.first.id, completion_status: 'succeeded',
-                         effective_date: (DateTime.now - 2.days).beginning_of_day)
+                         effective_date: (DateTime.current - 2.days).beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.first.id, completion_status: 'succeeded',
-                         effective_date: (DateTime.now - 3.days).beginning_of_day)
+                         effective_date: (DateTime.current - 3.days).beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.first.id, completion_status: 'failed',
-                         effective_date: (DateTime.now - 4.days).beginning_of_day)
+                         effective_date: (DateTime.current - 4.days).beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.first.id, completion_status: 'succeeded',
-                         effective_date: (DateTime.now - 5.days).beginning_of_day)
+                         effective_date: (DateTime.current - 5.days).beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.first.id, completion_status: 'succeeded',
-                         effective_date: (DateTime.now - 6.days).beginning_of_day)
+                         effective_date: (DateTime.current - 6.days).beginning_of_day)
 
 HabitTrackerEntry.create(habit_id: Habit.second.id, completion_status: 'unprocessed',
-                         effective_date: DateTime.now.beginning_of_day)
+                         effective_date: DateTime.current.beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.second.id, completion_status: 'succeeded',
-                         effective_date: (DateTime.now - 1.days).beginning_of_day)
+                         effective_date: (DateTime.current - 1.days).beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.second.id, completion_status: 'failed',
-                         effective_date: (DateTime.now - 2.days).beginning_of_day)
+                         effective_date: (DateTime.current - 2.days).beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.second.id, completion_status: 'succeeded',
-                         effective_date: (DateTime.now - 3.days).beginning_of_day)
+                         effective_date: (DateTime.current - 3.days).beginning_of_day)
 HabitTrackerEntry.create(habit_id: Habit.second.id, completion_status: 'succeeded',
-                         effective_date: (DateTime.now - 4.days).beginning_of_day)
+                         effective_date: (DateTime.current - 4.days).beginning_of_day)

@@ -30,8 +30,10 @@ module HabitsApi
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = 'Melbourne' # Your local time zone
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
+    # # config.eager_load_paths << Rails.root.join("extras")
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.

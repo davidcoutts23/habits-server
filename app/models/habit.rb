@@ -13,9 +13,13 @@ class Habit < ApplicationRecord
 
   def habit_tracker_weekly_progress
     Rails.logger.info self.id
-    # current_week_progress = []
-    # (DateTime.current.beginning_of_week..DateTime.current.beginning_of_week).map do |date|
-    #   Rails.logger.info date
-    # end
+    current_week_progress = []
+    (DateTime.current.beginning_of_week..DateTime.current.end_of_week).map do |date|
+      Rails.logger.info date
+      Rails.logger.info HabitTrackerEntry.first.effective_date
+      if date == HabitTrackerEntry.first.effective_date
+        Rails.logger.info "doweep"
+      end
+    end
   end
 end

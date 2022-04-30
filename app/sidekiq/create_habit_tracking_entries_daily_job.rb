@@ -5,7 +5,7 @@ class CreateHabitTrackingEntriesDailyJob
 
   def perform
     Habit.all.each do |habit|
-      if habit.days_of_week_active.include? current_day_of_week && (habit_tracker_entry_dates(habit.id).exclude? Time.now.strftime('%m/%d/%Y'))
+      if (habit.days_of_week_active.include? current_day_of_week) && (habit_tracker_entry_dates(habit_id: habit.id).exclude? DateTime.current.beginning_of_day)
         HabitTrackerEntry.create(completion_status: 0, habit_id: habit.id,
                                  effective_date: Date.current.beginning_of_day)
       end
@@ -19,6 +19,6 @@ class CreateHabitTrackingEntriesDailyJob
   end
 
   def habit_tracker_entry_dates(habit_id)
-    HabitTrackerEntry.where(habit_id:).pluck(:created_at).map { |date| date.strftime('%m/%d/%Y') }
+    HabitTrackerEntry.where(habit_id: habit_id).pluck(:effective_date)
   end
 end
